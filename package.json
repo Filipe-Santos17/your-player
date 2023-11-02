@@ -1,0 +1,31 @@
+{
+  "name": "your-player",
+  "version": "1.0.0",
+  "description": "player",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --kill-others  \"npm run dev-scss\"",
+    "dev-ts": "tsc --outDir dist --watch",
+    "dev-scss": "sass --watch src/scss/index.scss:dist/index.css",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Filipe-Santos17/your-player.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Filipe-Santos17/your-player/issues"
+  },
+  "homepage": "https://github.com/Filipe-Santos17/your-player#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "node-ts": "^6.0.1",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
+  }
+}

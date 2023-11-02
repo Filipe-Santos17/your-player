@@ -1,0 +1,280 @@
+  .your-player-video-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    background-color: #000;
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: .25rem;
+
+    video {
+      width: 100%;
+      height: 100%;
+    }
+
+    .not-found {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      //text-xl
+      color: #FFF;
+    }
+
+    .msgs-videoend {
+      position: absolute;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      place-items: center;
+      gap: 1.5rem;
+      inset: 0;
+      margin: auto;
+      max-height: 6rem;
+      width: max-content;
+
+      .btn-action {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-weight: 500;
+        padding: 1rem;
+        border: 1px solid #FFF;
+        cursor: pointer;
+        z-index: 10;
+        color: #FFF;
+        background-color: #FFFFFF1A;
+        //font-medium text-base leading-[1.1875rem] rounded-2xl;    
+
+        span {
+          display: none;
+          //sm:hidden
+        }
+      }
+
+      .step-counter {
+        gap: .5rem;
+        //col-span-2
+
+        p {
+          // @apply text-xs text-neutral-10 text-base;
+        }
+      }
+    }
+
+    .settings-painel {
+      position: absolute;
+      background-color: #1c1c1ce6;
+      color: #FFF;
+      padding: 1rem;
+
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+
+      height: 7rem;
+      width: 20rem;
+
+      right: -20rem;
+      bottom: 2.5rem;
+
+      z-index: 10;
+
+      display: none;
+
+      p {
+        // @apply font-semibold text-base tracking-tight leading-150;
+      }
+
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        button {
+          border: 1px solid #FFF;
+          padding: .5rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 2rem;
+          max-width: 3rem;
+          min-width: 3rem;
+          border-radius: .25rem;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, .1);
+          }
+
+          &.active {
+            background-color: #ffffff50;
+          }
+        }
+      }
+
+      &.active {
+        @apply translate-x-[-20rem];
+      }
+    }
+
+    .change-video {
+      display: flex;
+      position: absolute;
+      inset: 50%;
+
+      button {}
+    }
+
+    .your-player-video-controls-container {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      opacity: 0;
+      color: #FFF;
+      transition: all ease-in-out;
+      z-index: 30;
+      /*bg-black*/
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        z-index: -10;
+        pointer-events: none;
+        background: linear-gradient(to top, rgba(0, 0, 0, .75), transparent);
+        aspect-ratio: 6 / 1;
+      }
+
+      .controls {
+        display: flex;
+        gap: .5rem;
+        padding: .25rem;
+        align-items: center;
+        justify-content: space-between;
+
+        .sub-control {
+          display: flex;
+          align-items: center;
+        }
+
+        button {
+          background: none;
+          border: none;
+          color: #FFF;
+          padding: 0;
+          height: 2rem;
+          width: 2rem;
+          cursor: pointer;
+          opacity: .8;
+          transition: all ease-in-out;
+          font-size: 1rem;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &.paused .pause-icon {
+      display: none;
+    }
+
+    &:not(.paused) .play-icon {
+      display: none;
+    }
+
+    &.full-screen {
+      max-width: initial;
+      width: 100%;
+      max-height: 100vh;
+    }
+
+    .your-player-volume-container {
+      display: flex;
+      align-items: center;
+
+      .your-player-volume-control {
+        width: 0;
+        transform: scaleX(0) scaleY(0);
+        transform-origin: left;
+        height: .25rem;
+        border-radius: 999px;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        background: linear-gradient(to right, #003863 0%, #003863 50%, #003863 50%, #003863 100%);
+        transition: width 150ms ease-in-out, transform 150ms ease-in-out, background 450ms ease-in;
+        -webkit-appearance: none;
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          border-radius: 999px;
+          background-color: #FFF;
+          cursor: ew-resize;
+          width: 11px;
+          height: 11px;
+        }
+      }
+
+      &:hover .your-player-volume-control,
+      &:focus-within .your-player-volume-control {
+        width: 6.25rem;
+        transform: scaleX(1) scaleY(1);
+      }
+    }
+
+    .your-player-timeline-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 1.5rem;
+      margin-inline: .5rem;
+      height: 7px;
+
+      .your-player-timeline-control {
+        width: 100%;
+        height: .25rem;
+        border-radius: 999px;
+        cursor: pointer;
+        outline: none;
+        background: linear-gradient(to right, rgba(242, 243, 244, 0.5) 0%, rgba(242, 243, 244, 0.5) 50%, rgba(242, 243, 244, 0.5) 50%, rgba(242, 243, 244, 0.5) 100%);
+        transition: background 450ms ease-in;
+        -webkit-appearance: none;
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          border-radius: 999px;
+          background-color: #FFF;
+          cursor: pointer;
+          width: 11px;
+          height: 11px;
+
+          &:hover {
+            transform: scale(1.5);
+          }
+        }
+
+        &:hover {
+          height: 7px;
+        }
+      }
+
+      .your-player-current-time {
+        //@apply font-normal text-base leading-150 tracking-tight text-white;
+      }
+    }
+
+    &:hover .your-player-video-controls-container,
+    &:focus-within .your-player-video-controls-container,
+    &.paused .your-player-video-controls-container {
+      opacity: 1;
+    }
+  }

@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "concurrently --kill-others  \"npm run dev-scss\"",
+    "dev": "concurrently --kill-others \"npm run dev-scss\" \"npm run dev-ts\"",
     "dev-ts": "tsc --outDir dist --watch",
-    "dev-scss": "sass --watch src/scss/index.scss:dist/index.css",
+    "dev-scss": "sass --no-source-map --watch src/scss/index.scss:dist/index.css",
     "build": "vite build"
   },
   "repository": {

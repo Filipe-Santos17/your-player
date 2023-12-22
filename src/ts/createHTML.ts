@@ -1,34 +1,7 @@
-function CreateHTMLContainerVideo(elem: HTMLVideoElement, idKey: string) {
+function CreateHTMLContainerVideo(elem: HTMLVideoElement, idKey: string)  {
   const templateVideo = () => /*html*/`
     <div class="your-player-video-container paused" js-your-player="${idKey}">
-      <div class="msgs-videoend" style="display: none;">
-        <button class="btn-action reload">
-          <svg>
-            <use xlink:href="#icon_reload"></use>
-          </svg>
-          <span>Assistir novamente</span>
-        </button>
-        <a class="btn-action changeLocation" href="">
-          <span>Próximo</span>
-          <svg class="rotate-180">
-            <use xlink:href="#icon_go_back"></use>
-          </svg>
-        </a>
-        <div class="step-counter">
-          <p>
-            Próxima etapa em <span step-timer>10</span>
-          </p>
-        </div>
-      </div>
-      <div class="settings-painel">
-        <p>Velocidade do video</p>
-        <div class="buttons">
-          <button>0.5</button>
-          <button class="active">1</button>
-          <button>1.5</button>
-          <button>2</button>
-        </div>
-      </div>
+      <!--topo-->
       <div class="your-player-video-controls-container">
         <div class="your-player-timeline-container">
           <input type="range" class="your-player-timeline-control" min="0" max="1" step="any" value="0">
@@ -68,9 +41,9 @@ function CreateHTMLContainerVideo(elem: HTMLVideoElement, idKey: string) {
           </div>
           <div class="sub-control">
             <button class="settings-video-btn">
-              <svg>
+              <!-- <svg>
                 <use xlink:href="#settings-video"></use>
-              </svg>
+              </svg> -->
             </button>
             <button class="screen-video-btn">
               <svg class="full-screen" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -92,9 +65,9 @@ function CreateHTMLContainerVideo(elem: HTMLVideoElement, idKey: string) {
     </div>
   `;
 
-  //pegar atributos e valores - ps: inserir tudo depois no elemento de video
-  // const attrs = elem.getAttributeNames();
-  // attrs.map((i) => console.log(elem.getAttribute(i)));
+  const attrs = [...elem.attributes]
+
+  //TODO: change src position and filter control
 
   elem.insertAdjacentHTML("beforebegin", templateVideo());
   elem.remove();
@@ -103,6 +76,10 @@ function CreateHTMLContainerVideo(elem: HTMLVideoElement, idKey: string) {
 
   if(yourPlayerContainer){
     yourPlayerContainer.removeAttribute("js-your-player");
+
+    const video = yourPlayerContainer.querySelector('video');
+
+    attrs.forEach(attr => video?.setAttribute(attr.name, attr.value));
   }
 
   return yourPlayerContainer;

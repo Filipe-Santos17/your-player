@@ -66,9 +66,9 @@
         gap: .5rem;
         //col-span-2
 
-        p {
-          // @apply text-xs text-neutral-10 text-base;
-        }
+        // p {
+        //   // @apply text-xs text-neutral-10 text-base;
+        // }
       }
     }
 
@@ -128,7 +128,7 @@
       }
 
       &.active {
-        @apply translate-x-[-20rem];
+        transform: translateX(-20rem);
       }
     }
 
@@ -137,7 +137,7 @@
       position: absolute;
       inset: 50%;
 
-      button {}
+      // button {}
     }
 
     .your-player-video-controls-container {
@@ -309,9 +309,9 @@
         }
       }
 
-      .your-player-current-time {
-        //@apply font-normal text-base leading-150 tracking-tight text-white;
-      }
+      // .your-player-current-time {
+      //   //@apply font-normal text-base leading-150 tracking-tight text-white;
+      // }
     }
 
     &:hover .your-player-video-controls-container,

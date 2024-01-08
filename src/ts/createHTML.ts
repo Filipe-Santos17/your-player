@@ -1,7 +1,35 @@
-function CreateHTMLContainerVideo(elem: HTMLVideoElement, idKey: string)  {
+export default function CreateHTMLContainerVideo(elem: HTMLVideoElement, idKey: string)  {
   const templateVideo = () => /*html*/`
     <div class="your-player-video-container paused" js-your-player="${idKey}">
       <!--topo-->
+       <!-- <div class="msgs-videoend" style="display: none;">
+        <button class="btn-action reload">
+          <svg>
+            <use xlink:href="#icon_reload"></use>
+          </svg>
+          <span>Assistir novamente</span>
+        </button>
+        <a class="btn-action changeLocation" href="">
+          <span>Próximo</span>
+          <svg class="rotate-180">
+            <use xlink:href="#icon_go_back"></use>
+          </svg>
+        </a>
+        <div class="step-counter">
+          <p>
+            Próxima etapa em <span step-timer>10</span>
+          </p>
+        </div>
+      </div> -->
+      <!-- <div class="settings-painel">
+        <p>Velocidade do video</p>
+        <div class="buttons">
+          <button>0.5</button>
+          <button class="active">1</button>
+          <button>1.5</button>
+          <button>2</button>
+        </div>
+      </div> -->
       <div class="your-player-video-controls-container">
         <div class="your-player-timeline-container">
           <input type="range" class="your-player-timeline-control" min="0" max="1" step="any" value="0">

@@ -1,6 +1,6 @@
-// import CreateHTMLContainerVideo from "./createHTML"
+import CreateHTMLContainerVideo from "./createHTML"
 
-class yourPlayer {
+export default class yourPlayer {
   #yourPlayerElement;
   #yourPlayerContainer!: HTMLElement;
   #yourPlayerVideo!: HTMLVideoElement;
@@ -10,7 +10,9 @@ class yourPlayer {
   #yourPlayerBtnVolume!: HTMLButtonElement;
   // #yourPlayerTimeLineControl!;
 
-  constructor(elemParam: HTMLVideoElement | String, objConfig: Object) {
+  constructor(elemParam: HTMLVideoElement | String) { //objConfig: Object
+    console.log('rodou')
+
     if (typeof elemParam === "string") {
       const videoElement = document.querySelector(`video${elemParam}`);
 
@@ -151,7 +153,7 @@ class yourPlayer {
   };
 
   handleSetVolShowModalVolValue = () => {
-    
+
   }
 
   // TimeLine
@@ -161,13 +163,13 @@ class yourPlayer {
     document.addEventListener('keydown', this.handlePressKeyAction)
   }
 
-  #isInFocus = () => {
-    const selectedEl = document.activeElement
+  // #isInFocus = () => {
+  //   const selectedEl = document.activeElement
 
-    console.log(selectedEl)
+  //   console.log(selectedEl)
 
-    // if (selectedEl instanceof this.#yourPlayerContainer) {}
-  }
+  //    //if (selectedEl in this.#yourPlayerContainer) {}
+  // }
 
   handlePressKeyAction = ({ key }: { key: string }) => {
     console.log(document.activeElement === this.#yourPlayerVideo)
